@@ -1,0 +1,109 @@
+.container_account{
+    
+    width: 100vw;
+
+    &_title{
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 20px;
+        background-color: rgb(255, 255, 255);
+        width: 155px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 25px auto;
+
+    }
+
+    &_form{
+        
+        height: 40vh;
+        
+        display: flex;
+        
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        h3{
+            color: white;
+            text-align: center;
+        }
+
+        &_data{
+            z-index: 900;   
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 250px;
+            height: 250px;
+            border: 1px solid white;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: 'Rubik Mono One', sans-serif !important;
+            background-color: rgb(4, 4, 23);
+            font-size: 12px;
+            input[type="text"],input[type="email"] ,input[type="password"]{
+                height: 25px;
+                background-color: #141724;
+                border: 1px solid #62626f;
+                color: white;
+                outline: none !important;
+                border-radius: 10px;
+                font-size: 10px;
+                transition: all 300ms;
+                
+                &:focus{
+                    border: 1px solid rgb(24, 23, 23);    
+                    outline: none !important;
+                    
+                }
+            }
+    
+            input::placeholder{
+                color:#5b5b64;
+                text-align: center;
+                font-size: 8px;
+            }
+            button{
+                z-index: 999;
+                background-color:rgba(0, 13, 252, 0.265);
+                font-size: 14px;
+                color: white;
+                border-radius: 50%;
+                transition: all 300ms;
+                &:hover{
+                    border-radius: 10%;
+                    transform: scale(1.1);
+                }
+    
+            }
+         
+        }
+    }
+
+    .container_forms{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-basis: 1;
+        flex-flow: row wrap;
+    }
+
+    .container_address{
+        z-index: 900;   
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .container_account_title{
+            width: 132px;
+        }
+
+        &_iconPlus{
+            z-index: 900;   
+            color: green;
+            font-size: 26px;
+        }
+    }
+  
+}

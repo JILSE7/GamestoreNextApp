@@ -1,0 +1,233 @@
+@import'./modal.scss';
+
+.layout_container{
+    
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+
+    
+
+
+    &_header{
+        background-color: $primary;
+        width: 100%;
+        height: 60px;
+        color: $font-with;
+        padding: 0 20px;
+    }
+
+    &_logo{
+        
+        &_image{
+            width: 20px;
+            height: 20px;
+        }
+        
+        &_h1{
+            font-family: 'Rubik Mono One', sans-serif;
+            color: $font-blue;
+            transition: all 300ms;
+            font-size: 12px;
+        }
+
+          
+                
+        &:hover{
+            .layout_container_logo_h1{
+                color: red;
+                transform: rotateY(180deg) scale(1.2) translateX(-10px);
+            }
+        }
+
+    }
+
+    &_search{
+        position: relative;
+        &:hover{
+            .layout_container_icon{
+                margin-left: -5px !important;
+                color:  $font-blue;
+            }
+        }
+    }
+    &_input{
+        background-color: transparent;
+        border: 0 ;
+        border-bottom:  2px solid $font-blue;
+        width: 0px;
+        transition: all 300ms;
+        outline: none !important;
+
+        &:hover{
+            width: 120px;
+        }
+        &::placeholder{
+            padding-left: 5px;
+        }
+        &:focus{
+            color: $font-blue;
+        }
+    }
+
+    &_icon{
+        margin-left: 8px;
+        position: absolute;
+        color: white;
+    }
+    
+    &_nabvar{
+        
+        &_logoconsole{
+            width: 30px;
+        }
+        &_logoconsoleN{
+            width: 30px;
+            padding-top:8px ;
+            margin-left: 2px;
+        }
+        &_listitem{
+            position: relative;
+            z-index: 999;
+            
+            &::after {
+                content: "";
+                width: 0;
+                height: 0.3rem;
+                border-radius: 1px;
+                position: absolute;
+                left: 1px;
+                bottom: -5px;
+                background-color: white;
+                transition: width 200ms ease-in;
+                z-index: 999;
+              }
+
+              &:hover::after,
+              &:focus::after {
+                width: 105%;
+              }
+
+              &:hover ul,
+              &:focus ul {
+                opacity: 1;
+                visibility: visible;
+              }
+
+              &_drop{
+                position: absolute;
+                top: 35px;
+                left: -45px;
+                justify-content: center;
+                background-color: transparent !important;
+                border-radius: 1px;
+                width: 7rem;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 200ms ease-in-out; 
+
+                
+
+                li {
+                    list-style: none;
+                    margin: 0 auto;
+                    padding: 8px;
+                    border-radius: 1px;
+                    transition: background-color 200ms ease-in-out;
+                    border-radius: 30px;
+                    &:hover,
+                    &:focus {
+                      background-color: rgb(0, 115, 255);
+                      
+                    }
+                }
+              }
+        }
+
+    }
+    
+}
+
+//cheats
+.dropImage{
+    left: -40px !important;
+  }
+
+  .dropPs{
+    left: -38px;
+  }
+
+  .iconConsole{
+      font-size: 12px !important;
+  }
+
+@media (min-width : 600px) {
+    .layout_container{
+        &_logo{
+            flex-direction: row;
+                &_image{
+                    width: 50px;
+                    height: 50px;
+                }
+            
+                &_h1{
+                    font-size: 18px;
+                }
+        }
+
+        &_search{      
+            &:hover{
+                .layout_container_icon{
+                    margin-left: 5px !important;
+                }
+            }
+        }
+
+        &_input{           
+            width: 115px;
+            padding-right: 10px;
+            &:hover{
+                width: 220px;
+            }        
+        }
+        
+        &_icon{
+            margin-left: 0px;
+        }
+        
+        &_nabvar{
+            &_logoconsole{
+                width: 50px;
+            }
+            &_logoconsoleN{
+                width: 35px;
+                padding-left: 2px;
+            }
+
+            &_listitem{
+                  &_drop{
+                    top: 45px;
+                    left: -35px;
+                  }
+                }
+        }
+  
+    }
+
+    .iconConsole{
+        font-size: 15px !important;
+    }
+
+    .dropPs{
+        left: -30px;
+      }
+
+      .dropImage{
+        left: -30px !important;
+      }
+    
+}

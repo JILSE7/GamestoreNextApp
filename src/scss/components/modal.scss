@@ -1,0 +1,130 @@
+//Clases especiales para el modal
+.ReactModal__Overlay ,ReactModal__Overlay--after-open{
+background-color: transparent !important;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 999;   
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.Modal_Container{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    font-family: 'Rubik Mono One', sans-serif;
+    //Header
+    &_Header{
+        text-align: center;
+        background-color:rgba(0, 13, 252, 0.265);   
+        margin-bottom: 20px;
+        color: rgb(250, 249, 249);
+    }
+
+    &_Gif{
+        border-radius: 5px;
+        
+        height: 100px;
+    }
+
+    &_Form{
+        margin-top: 5px;
+        height: 80%;
+        
+        input[type="text"],input[type="email"] ,input[type="password"]{
+            height: 25px;
+            background-color: #141724;
+            border: 1px solid #62626f;
+            color: white;
+            outline: none !important;
+            border-radius: 10px;
+            font-size: 9px;
+            &:focus{
+                border: 1px solid rgb(24, 23, 23);    
+                outline: none !important;
+                
+            }
+        }
+
+        input::placeholder{
+            color:#5b5b64;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active  {
+
+            border: 1px solid white;
+            transition: background-color 5000s ease-in-out 0s;
+            font-family: 'Rubik Mono One', sans-serif !important;
+            
+        }
+        input:-webkit-autofill {
+            -webkit-text-fill-color:  white !important;
+            font-family: 'Rubik Mono One', sans-serif !important;
+        }
+
+        label{
+            color: rgb(195, 195, 196);
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+    }
+    p{
+        font-size: 10px;
+        letter-spacing: -0.5px;
+        margin-top: 2px;
+        transition: all 300ms;
+        color:#5b5b64;
+        &:hover{
+            text-decoration: underline;
+            color: white;
+        }
+    }
+
+    &_Buttons{
+        margin-top: 25px;
+        button{
+            background-color:rgba(0, 13, 252, 0.265);
+            font-size: 14px;
+            color: white;
+            border-radius: 50%;
+            transition: all 300ms;
+            &:hover{
+                border-radius: 10%;
+                transform: scale(1.1);
+            }
+
+        }
+    }
+
+
+ 
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+ 
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(101, 100, 100);
+  }
+}
+
+
+
+
+
