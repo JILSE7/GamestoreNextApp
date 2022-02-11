@@ -4,11 +4,11 @@ import * as Yup from 'yup';
 import { useContext, useEffect, useState } from 'react'
 import Loader from 'react-loader-spinner';
 import { toast } from 'react-toastify';
-import { updateNameApi } from '../../api/user';
+import { updateNameApi } from '../../../api/user';
 
-import AuthContext from '../../context/AuthContext';
-import WaitUser from '../WaitUser';
-import { showCheckToast, showErrorToast } from '../../Helpers/toast';
+import AuthContext from '../../../context/AuthContext';
+import WaitUser from '../../WaitUser';
+import { showCheckToast, showErrorToast } from '../../../Helpers/toast';
 
 
 const AccountForm = ({user, logOut}) => {

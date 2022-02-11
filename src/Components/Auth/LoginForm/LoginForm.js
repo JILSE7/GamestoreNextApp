@@ -1,14 +1,15 @@
 //Formik & Yup
-import { Formik, useFormik } from "formik";
-import { useContext, useEffect, useRef, useState } from "react";
-import Loader from "react-loader-spinner";
-import {toast} from 'react-toastify';
+import { useContext, useRef, useState } from "react";
+
 import * as Yup from 'yup';
-import { loginUser, resetPasswordStrapi } from "../../../api/user";
+import {  useFormik } from "formik";
+
 import AuthContext from "../../../context/AuthContext";
+import Loader from "react-loader-spinner";
+
 import { initialLogin } from "../../../Helpers/initialStates";
-import useAuth from "../../../Hooks/useAuth";
-import UseModal from "../../../Hooks/UseModal";
+import { loginUser, resetPasswordStrapi } from "../../../api/user";
+import { showCheckError, showCheckToast } from "../../../Helpers/toast";
 
 
 
@@ -26,30 +27,14 @@ const LoginForm = ({login, setModal}) => {
             const resp =  await loginUser(data);
             
             if(resp?.jwt){
-                toast.success("Excelente",{
-                    theme: "dark",
-                    progress: undefined,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    autoClose: 3000,
-                });
+                showCheckToast();
                 setModal(false);
                 auth.login(resp.jwt)
 
                 
                 
             }else{
-                toast.error("Error al regitrar al usuario. Username o email existentes",{
-                    theme: "dark",
-                    progress: undefined,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    autoClose: 3000,
-                })
+                showCheckError("Error al regitrar al usuario. Username o email existentes");
             }
             setLoading(false)
 

@@ -11,7 +11,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    height: '355px',
+    minHeight: '355px',
+    height:'auto',
     width: '300px',
     padding: '10px',
     backgroundColor: '#161b22'

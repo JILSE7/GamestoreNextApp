@@ -42,7 +42,7 @@ background-color: transparent !important;
         margin-top: 5px;
         height: 80%;
         
-        input[type="text"],input[type="email"] ,input[type="password"]{
+        input[type="text"],input[type="email"] ,input[type="password"],input[type="number"]{
             height: 25px;
             background-color: #141724;
             border: 1px solid #62626f;
@@ -50,11 +50,18 @@ background-color: transparent !important;
             outline: none !important;
             border-radius: 10px;
             font-size: 9px;
+            -moz-appearance: textfield !important;
             &:focus{
                 border: 1px solid rgb(24, 23, 23);    
                 outline: none !important;
                 
             }
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
         }
 
         input::placeholder{

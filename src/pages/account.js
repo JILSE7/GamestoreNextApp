@@ -4,19 +4,21 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { getMeApi } from "../api/user";
 import AuthContext from "../context/AuthContext";
-import AccountForm from "../Components/AccountForm";
+import AccountForm from "../Components/Account/AccountForm";
 import LoginForm from "../Components/Auth/LoginForm";
-import AccountEmailForm from "../Components/AccountEmailForm";
-import AccountPasswordForm from "../Components/AccountPasswordForm";
-import Address from "../Components/Address";
+import AccountEmailForm from "../Components/Account/AccountEmailForm";
+import AccountPasswordForm from "../Components/Account/AccountPasswordForm";
+import Address from "../Components/Account/Address";
+
 
 
 const Account = () => {
     //HACER ESTE COMPONENTE IS LOADING PARA OCUPARLO EN UN CUSTOM HOOK
 
+    const Router = useRouter();
     const {auth,logOut} = useContext(AuthContext);
     const [user, setUser] = useState(undefined);
-    const Router = useRouter();
+    const [addressReload, setAddressReload] = useState(false);
 
         
     
@@ -44,9 +46,9 @@ const Account = () => {
                 <AccountEmailForm  user={user} logOut={logOut}/>
                 <AccountPasswordForm user={user} logOut={logOut}/>
             </div>
-            <Address/>
-            
-            
+            <Address user={user} logOut={logOut} reload={addressReload} setReload={setAddressReload}/>
+    
+        
         </BasicLayout>
     </div>
     )

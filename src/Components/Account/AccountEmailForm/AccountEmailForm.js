@@ -4,11 +4,11 @@ import * as Yup from 'yup';
 import { useContext, useEffect, useState } from 'react'
 import Loader from 'react-loader-spinner';
 import { toast } from 'react-toastify';
-import { updateEmailApi, updateNameApi } from '../../api/user';
+import { updateEmailApi, updateNameApi } from '../../../api/user';
 
-import AuthContext from '../../context/AuthContext';
-import WaitUser from '../WaitUser';
-import { showCheckToast, showErrorToast } from '../../Helpers/toast';
+import AuthContext from '../../../context/AuthContext';
+import WaitUser from '../../WaitUser';
+import { showCheckToast, showErrorToast } from '../../../Helpers/toast';
 
 
 const AccountEmailForm = ({user, logOut}) => {
@@ -21,7 +21,7 @@ const AccountEmailForm = ({user, logOut}) => {
     
     
     const formik = useFormik({
-        initialValues: initialUpdateEmail(user),
+        initialValues: initialUpdateEmail(),
         validationSchema: Yup.object(validationSchema()),
         onSubmit : async(data) => {
             console.log(data);
@@ -45,7 +45,6 @@ const AccountEmailForm = ({user, logOut}) => {
     })
     const handleErrors =() => {
         if(formik.errors.email || formik.errors.repeatEmail )showErrorToast("email", "Los correos no concuerdan entre si, porfavor verifiquelos");
-        
         
     }
     return (
@@ -90,7 +89,7 @@ const AccountEmailForm = ({user, logOut}) => {
     )
 };
 
-const initialUpdateEmail = (user) => { 
+const initialUpdateEmail = () => { 
     return{
     email: "",
     repeatEmail:  ""

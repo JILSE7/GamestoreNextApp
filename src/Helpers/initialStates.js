@@ -13,10 +13,21 @@ const initialLogin = {
     password: ''
 }
 
+const initialAddress = {
+    title: "",
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    phone: ""
+}
+
 
 
 export {
     initialRegister,
     initialLogin,
+    initialAddress
     
 }

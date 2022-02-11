@@ -1,3 +1,4 @@
+import { showCheckError, showErrorToast } from "../Helpers/toast";
 import { BASE_PATH } from "../utils/constants";
 import { authFetch, fetchFunction } from "../utils/feth";
 
@@ -87,6 +88,10 @@ export const updatePassword = async(idUser, password, logOut) => {
             }
             return  await authFetch(url,params,logOut);
     } catch (error) {
-        
+        showCheckError("Error al actualizar la contraseña")
     }
 };
+
+
+
+

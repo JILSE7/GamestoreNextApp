@@ -2,7 +2,6 @@ import Loader from 'react-loader-spinner';
 
 const WaitUser = () => (
     <>
-    <h2 className="container_account_title">Configuracion</h2>
     <div className="container_account_form">
     <h3>Espere Porfavor</h3>
         <form className="container_account_form_data">
