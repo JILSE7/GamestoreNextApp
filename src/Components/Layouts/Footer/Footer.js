@@ -9,10 +9,10 @@ import {FaUserNinja,FaBabyCarriage} from 'react-icons/fa';
 const Footer = () => {
     const {auth,logOut, reloadUser} = useContext(AuthContext);
     const [user, setUser] = useState({});
-    console.log(reloadUser);
+    
     
     useEffect(() => {
-         console.log("hola desde gutte");
+         
         (async()=>{
             const response = await getMeApi(logOut);
             if(response){

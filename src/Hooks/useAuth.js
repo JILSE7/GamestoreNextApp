@@ -1,7 +1,7 @@
 
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getToken, removeToken, setToken } from '../Helpers/functionsAuth';
 
 const useAuth = () => {
@@ -11,7 +11,7 @@ const useAuth = () => {
     useEffect(() => {
       console.log("han actualizado al usuario");
       const token = getToken();
-      console.log(token);
+      
       token ? setAuth({
         token,
         idUser: jwtDecode(token).id
@@ -31,7 +31,7 @@ const useAuth = () => {
 
       const logOut = () => {
         if(auth){
-          console.log('toy logueado');
+          //console.log('toy logueado');
           removeToken();
           setAuth(null);
           router.push('/');

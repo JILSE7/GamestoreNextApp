@@ -11,7 +11,7 @@ import useAuth from '../Hooks/useAuth';
 
 function MyApp({ Component, pageProps }) {
       const {auth, login, logOut,setReloadUser,reloadUser} = useAuth();
-      console.log(auth);
+      /* console.log(auth); */
   return ( 
                   <AuthContext.Provider value={{
                     auth,

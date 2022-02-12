@@ -9,7 +9,7 @@ SiNintendoswitch as nsw
 } from 'react-icons/si';
 
 
-const consoles = {
+const consolesIcon = {
     ps2: {name: 'ps2', icon: ps2},
     ps3: {name: 'ps3', icon: ps3},
     ps4: {name: 'ps4', icon: ps4},
@@ -22,5 +22,5 @@ const consoles = {
 
 
 export {
-  consoles
+  consolesIcon
 }
