@@ -18,12 +18,13 @@ const NavBar = () => {
     useEffect(() => {
         
         const platformsLocal = JSON.parse(localStorage.getItem('platforms')) || [];
+        console.log(platformsLocal);
 
         if(platformsLocal.length <= 0){
             
             getPlatformsApi()
                             .then((data) => {
-                                    setPlatforms(data);
+                                    setPlatforms([...data]);
                                     localStorage.setItem("platforms", JSON.stringify(data));
                             })
                             .catch(console.log)
@@ -34,21 +35,16 @@ const NavBar = () => {
     }, []);
 
 
-    
-    
-
-
-
     return (
         <div className="layout_container_nabvar">
                 <nav className="w-full">
                     <ul className="flex  justify-around">
                         {
-                            platforms.map(platform => {
+                            platforms.map((platform,i) => {
                                 const consoles = Object.values(platform.consoles||[]);
                                 
                                 return(
-                                    <li className="layout_container_nabvar_listitem">
+                                    <li className="layout_container_nabvar_listitem" key={Date.now() + (i*2)}>
                                         <img src={`/${platform.image}`} className="layout_container_nabvar_logoconsole" /> 
                                               
                                         {(platform.title === "Xbox") ? generateImage(consoles) : generateList(consoles)}
@@ -56,23 +52,9 @@ const NavBar = () => {
                                 )
                             })
                         }
-                       {/*  <li className="layout_container_nabvar_listitem">
-                            <img src="/playstation-logo.png" className="layout_container_nabvar_logoconsole" />
-                            {generateList(ps2, ps3,ps4, ps5 , psv)}
-                        </li>
-                        <li className="layout_container_nabvar_listitem">
-                        <img src="/xbox-logo.png" className="layout_container_nabvar_logoconsole" />
-                            {generateImage()}
-                        </li>
-                        <li className="layout_container_nabvar_listitem">
-                        <img src="/nintendo-logo.png" className="layout_container_nabvar_logoconsoleN" />
-                            {generateList(n3d, ngc, nsw)}
-                        </li>
-                        <li className="layout_container_nabvar_listitem">
-                        <img src="/windows-logo.png" className="layout_container_nabvar_logoconsoleN"  />
-                        </li> */}
+
                     </ul>
-                </nav>
+                    </nav>
         </div>
     )
 }
@@ -86,12 +68,12 @@ const generateList = (consoles = []) => {
     return(
 
         <ul className={consoles.includes('ps2') ? "layout_container_nabvar_listitem_drop dropPs" : "layout_container_nabvar_listitem_drop"}>
-            {consoles.map(con => {
+            {consoles.map((con,i) => {
                 
                 if(consolesIcon[con]){
                     
                     return (
-                        <li>
+                        <li key={i + Date.now()}>
                             <Link href={`/games/${con}`}>
                                 <a>
                                     <IconContext.Provider value={{size:"2.5em"}}>   
@@ -117,8 +99,8 @@ const generateImage = (consoles=[]) => {
         <ul className="layout_container_nabvar_listitem_drop dropImage">
         
             {
-                consoles.map(image => {
-                    return  <li><Link href={`/games/${image}`}><a><img src={`/${image}.png`} className="layout_container_nabvar_logoconsole"/></a></Link></li>
+                consoles.map((image,i) => {
+                    return  <li key={i + Date.now()}><Link href={`/games/${image}`}><a><img src={`/${image}.png`} className="layout_container_nabvar_logoconsole"/></a></Link></li>
                 })
             }
         </ul>
