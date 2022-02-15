@@ -9,7 +9,36 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         
+    }
 
+    .container_game_search{
+     display: flex;   
+     flex-wrap: wrap;
+     justify-content: center;
+     margin-top: 60px;
+     
+
+     .game_info{
+         width: 400px;
+         .game_title{
+             font-size: 20px;
+         }
+         .game_summary{
+             font-size: 13px;
+             text-align: justify;
+         }
+         .game_price{
+             background-color: yellow;
+             color: black;
+             text-align: center;
+         }
+
+    }
+        .container_game{
+           margin-right: 45px !important;
+           opacity: 1;
+        }
+    }
         .container_game{
            width: 250px;
            height: 350px;
@@ -85,5 +114,23 @@
 
 
         
+    
+}
+
+
+.image-gallery-content .image-gallery-slide .image-gallery-image{
+    max-height: 450px !important;
+}
+
+
+
+@media (max-width: 768px) {
+    .container_game_search{
+     flex-direction: column;
+     align-items: center;
+
+     .game_info{
+        margin-bottom: 70px;
+    }
     }
 }

@@ -31,3 +31,15 @@ export const getGamePLatfomApi = async(platform, limit, start) => {
         console.log(error);
     }
 }
+
+export const getGameUrl = async(path) => {
+    try {
+        const url = `${BASE_PATH}/games?url=${path}`;
+        const result = await (await fetch(url)).json();
+
+        return result || undefined;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
