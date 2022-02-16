@@ -15,7 +15,7 @@ const Carousel = ({images}) => {
   return (
       <>
         {
-            imagesState.length > 0 && <ImageGallery items={imagesState} thumbnailHeight={"50"} originalWidth={50} />
+            imagesState.length > 0 && <ImageGallery items={imagesState} lazyLoad={true} />
         }
       </>
   )

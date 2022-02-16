@@ -6,8 +6,6 @@ import Link from 'next/link';
 import {IconContext} from 'react-icons';
 import { getPlatformsApi } from '../../../api/platform';
 
-const images = ['xbox', '360','one'];
-
 const NavBar = () => {
 
     
@@ -18,7 +16,6 @@ const NavBar = () => {
     useEffect(() => {
         
         const platformsLocal = JSON.parse(localStorage.getItem('platforms')) || [];
-        console.log(platformsLocal);
 
         if(platformsLocal.length <= 0){
             

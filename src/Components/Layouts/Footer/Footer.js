@@ -35,7 +35,7 @@ const Footer = () => {
                             </a>
                         </Link>
                     
-                        <Link href="/wishlist">
+                        <Link href="/wishList">
                         <a className="flex flex-col items-center p-1cursor-pointer">
                             <BsHeart size={"1.5em"}/>
                             WishLits

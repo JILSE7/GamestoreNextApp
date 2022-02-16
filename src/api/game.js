@@ -43,3 +43,15 @@ export const getGameUrl = async(path) => {
         console.log(error);
     }
 }
+
+
+
+export const getGame = async(title) => {
+    try {
+        const url = `${BASE_PATH}/games?_q=${title}`;
+        return await (await fetch(url)).json();
+
+    } catch (error) {
+        console.log(error);
+    }
+}

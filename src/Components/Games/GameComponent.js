@@ -1,6 +1,8 @@
 import React from 'react'
 
 const GameComponent = ({game}) => {
+
+  
     
   return (
     <div className="container_game">

@@ -9,18 +9,29 @@ import useAuth from "../../../Hooks/useAuth";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../../context/AuthContext";
 import { getMeApi } from "../../../api/user";
+import { useRouter } from "next/router";
+import search from "../../../pages/search";
+
 
 const Header = () => {
+
+    const router = useRouter();
+
     const {modalIsOpen,openModal,afterOpenModal,closeModal, setIsOpen} = UseModal();
     const {auth, logOut} = useContext(AuthContext);
+    const [search, setSearch] = useState("");
 
+    const handlePress = (e) => {
+        console.log(e);
+        e.code === "Enter" &&  router.push(`/search?query=${search}`);
+    }
    
     return (
         <div style={{width:"100vw"}}>
         
         <header className="layout_container_header flex  items-center justify-between" >
                         <Logo/>
-                        <Search/>
+                        <Search setSearch={setSearch} search={search} handlePress={handlePress}/>
                         <div className="flex items-center">
                             {
                                 (auth?.idUser) ? ( <AiOutlineLogout size="2em" onClick={()=> logOut()}/>) : (<AiOutlineLogin size="2em"  onClick={() => openModal()}/>)
@@ -41,7 +52,7 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;
 
 
 
@@ -52,25 +63,22 @@ const  Logo = () =>  (
         </div>
 );
 
-const Search = () => (
+const Search = ({search,setSearch, handlePress}) => (
         <div className="flex items-center layout_container_search">
             <VscSearch  className="layout_container_icon"/>
-            <input type="serch" placeholder="Busquemos un juego" className="layout_container_input bg-gray-800  focus:outline-none py-1 px-4 text-center "/>
+            <input 
+                type="serch" 
+                placeholder="Busquemos un juego" 
+                className="layout_container_input bg-gray-800  focus:outline-none py-1 px-4 text-center"
+                id="inputSearch"
+                value={search}
+                onChange={(e) =>{
+                    console.log(e);
+                    setSearch(e.target.value)
+                }}
+                onKeyPress={handlePress}
+                
+            />
         </div>
 );
-
-const Menu = () => (
-    <div className="layout_container_nabvar">
-                <nav className="w-full">
-                    <ul className="flex  justify-around">
-                        <li className="layout_container_nabvar_listitem">
-                           hola
-                        </li>
-                        <li className="layout_container_nabvar_listitem">
-                        hola
-                        </li>
-                    </ul>
-                </nav>
-        </div>
-)
 
