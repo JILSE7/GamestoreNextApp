@@ -1,22 +1,30 @@
-import { useRouter } from 'next/router'
 import React, { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
+import { addFavorite, deleteFavorite, isFavorite } from '../api/favorites';
 import { getGameUrl } from '../api/game';
 import BasicLayout    from '../Components/Layouts/BasicLayout';
 import Carousel       from '../Components/Carousel';
 import GameComponent  from '../Components/Games';
 import VideoComponent from '../Components/Video';
 import WaitUser       from '../Components/WaitUser/WaitUser';
-import { addFavorite, deleteFavorite, isFavorite } from '../api/favorites';
 import useAuth from '../Hooks/useAuth';
+import Loader from 'react-loader-spinner';
+import useCart from '../Hooks/useCart';
+import { addProductC } from '../api/cart';
+import AuthContext from '../context/AuthContext';
+
 
 
 const Game = () => {
 
     const {query} = useRouter();
+    const {setreloadCart} = useContext(AuthContext)
+    const {auth, logOut, addProduct} = useAuth();
 
-    const {auth, logOut} = useAuth();
+    
+    
 
     const [game, setGame] = useState(undefined);
     const [isFavoriteState, setIsFavoriteState] = useState(false);
@@ -34,6 +42,7 @@ const Game = () => {
         setrealodFavorite(false);
     };
 
+
     useEffect(() => {
         if(query.game){
             getGameUrl(query.game).then((data) => setGame({...data[0]}))
@@ -45,19 +54,18 @@ const Game = () => {
     useEffect(() => {
 
         if(auth && game){
-
             isFavorite(auth.idUser, game.id, logOut).then((data) => setIsFavoriteState({...data[0]}))
                                                     .catch(console.log())
         }
     }, [game])
     
-    console.log(isFavoriteState);
+    
 
 
   return (
     <div className='container'>
         <BasicLayout>
-            {
+           {
                 game !== undefined ? (
                    <>
                     <div className='container_game_search'>
@@ -78,6 +86,17 @@ const Game = () => {
                                     }
                                     
                             </div>
+                            <div className='flex items-center justify-evenly mt-2'>
+                            
+                                <button className='game_buy' onClick={() =>{
+                                    
+                                    addProduct(game.url);
+                                    setreloadCart((prev) => !prev)
+                                }
+                                    }>Comprar</button>
+                               
+                                    
+                            </div>
                         </div>
                     </div>
                     <div className='w-full flex justify-center items-center flex-col container_video'>
@@ -91,7 +110,10 @@ const Game = () => {
                    </>
 
                 ):(
-                    <WaitUser/>
+                     <div className='flex flex-col items-center justify-center  w-full h-screen'>
+                        <p className='mb-5'>Cargando...</p>
+                        <Loader type="Puff" color="#00BFFF" height={200} width={200} className="mb-24"/>
+                    </div>
                 )
             }
  

@@ -30,11 +30,8 @@ const LoginForm = ({login, setModal}) => {
                 showCheckToast();
                 setModal(false);
                 auth.login(resp.jwt)
-
-                
-                
             }else{
-                showCheckError("Error al regitrar al usuario. Username o email existentes");
+                showCheckError("Password o Usuario incorrectos");
             }
             setLoading(false)
 

@@ -5,12 +5,20 @@ import { getMeApi } from '../../../api/user';
 
 import {BsController,BsHeart} from 'react-icons/bs';
 import {FaUserNinja,FaBabyCarriage} from 'react-icons/fa';
+import useCart from '../../../Hooks/useCart';
+import CartContext from '../../../context/CartContext';
+import { countProductsCart } from '../../../api/cart';
+import useAuth from '../../../Hooks/useAuth';
 
 const Footer = () => {
     const {auth,logOut, reloadUser} = useContext(AuthContext);
+
+    const {products} = useContext(CartContext)
+
     const [user, setUser] = useState({});
     
     
+        
     useEffect(() => {
          
         (async()=>{
@@ -20,6 +28,10 @@ const Footer = () => {
             }
         })()
     }, [auth, reloadUser]);
+
+
+    
+    
 
 
     return (
@@ -51,7 +63,8 @@ const Footer = () => {
                     
                     <div className="flex flex-col items-center p-1 cursor-pointer">
                         <FaBabyCarriage size={"1.5em"}/>
-                        Mi carrito
+                        
+                        { `Mi carrito ${products}`}
                     </div>
                     </>
                 )

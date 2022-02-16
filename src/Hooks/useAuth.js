@@ -2,58 +2,70 @@
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
+import { addProductC } from '../api/cart';
 import { getToken, removeToken, setToken } from '../Helpers/functionsAuth';
+import { showCheckError } from '../Helpers/toast';
 
 const useAuth = () => {
-  const router = useRouter();
+    const router = useRouter();
     const [auth, setAuth] = useState(undefined);
     const [reloadUser, setReloadUser] = useState(false);
-    useEffect(() => {
-      console.log("han actualizado al usuario");
-      const token = getToken();
-      
-      token ? setAuth({
-        token,
-        idUser: jwtDecode(token).id
-      }) : setAuth(null);
-      setReloadUser(false);
-    }, [reloadUser])
     
-      const login = (token) => {
-            
-          setAuth({
-            token,
+    
+    
+    const login = (token) => {
+      
+      setAuth({
+        token,
             idUser: jwtDecode(token).id
           });
           //Guardando token en LS
           setToken(token);
-      }
+        };
 
-      const logOut = () => {
+        const logOut = () => {
         if(auth){
           //console.log('toy logueado');
           removeToken();
-          setAuth(null);
+          setAuth(undefined);
           router.push('/');
           
         }
-      }
+      };
+      
+      
+      const addProduct = (product) => {
+        
+        if(getToken()){
+          console.log("entro aqui");
+          addProductC(product);
+        }else{
+          showCheckError("Para comprar necesitas iniciar sesión");
+        }
+      };
+      
+      
+      useEffect(() => {
+        const token = getToken();
+        
+        token ? setAuth({
+          token,
+          idUser: jwtDecode(token).id
+        }) : setAuth(undefined);
+        setReloadUser(false);
+      }, [reloadUser]);
     
-   /*  const authData = useMemo(() => ({
-      auth,
-      login,
-      logOut: ()=>{},
-      setReload : () => {}
-    }), []); */
 
 
     return {
+        addProduct,
         auth,
-        setAuth,
         login,
         logOut,
+        reloadUser,
+        setAuth,
         setReloadUser,
-        reloadUser
+
     }
 }
 

@@ -9,8 +9,6 @@ const Carousel = ({images}) => {
             setImagesState(images.map(image => { return {original: image.url, thumbnail: image.url}}))
         }
     }, [images]);
-
-    console.log(imagesState);
     
   return (
       <>
