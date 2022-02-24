@@ -3,13 +3,21 @@ import { showCheckError, showCheckToast } from "../Helpers/toast";
 
 
 export const getProductsC = () => {
-    const cart = localStorage.getItem('cart');
+
+    const h = JSON.parse(localStorage.getItem('cart'));
+
+    
+
+    
+
+    return h;
+    /* const cart = localStorage.getItem('cart');
 
     if(cart){
         return cart.split(',');
     }else{
-        return null;
-    }
+        return [];
+    } */
 };
 
 

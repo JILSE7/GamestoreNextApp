@@ -37,7 +37,7 @@ export const getGameUrl = async(path) => {
         const url = `${BASE_PATH}/games?url=${path}`;
         const result = await (await fetch(url)).json();
 
-        return result || undefined;
+        return result[0] || undefined;
 
     } catch (error) {
         console.log(error);

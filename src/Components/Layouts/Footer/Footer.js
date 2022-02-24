@@ -60,12 +60,15 @@ const Footer = () => {
                             {`${user.name} ${user.lastname}`}
                         </a>
                         </Link>
+                    <Link href="/cart">
+                        <a className="flex flex-col items-center p-1 cursor-pointer">
+                            <FaBabyCarriage size={"1.5em"}/>
+                            
+                            { `Mi carrito ${products}`}
+                        </a>
+                    </Link>
+
                     
-                    <div className="flex flex-col items-center p-1 cursor-pointer">
-                        <FaBabyCarriage size={"1.5em"}/>
-                        
-                        { `Mi carrito ${products}`}
-                    </div>
                     </>
                 )
             }
