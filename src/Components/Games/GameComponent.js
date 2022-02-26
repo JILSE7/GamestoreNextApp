@@ -6,7 +6,7 @@ const GameComponent = ({game}) => {
     
   return (
     <div className="container_game">
-        <div style={{backgroundImage:`url(${game.poster.url})`, width:"100%", height:"100%", backgroundSize:"cover"}}></div>
+        <div className='delete'  style={{backgroundImage:`url(${game.poster.url})`, width:"100%", height:"100%", backgroundSize:"cover"}}></div>
         
         <div className="container_title">
             <h3>{game.title}</h3>

@@ -14,6 +14,7 @@ import Loader from 'react-loader-spinner';
 import useCart from '../Hooks/useCart';
 import { addProductC } from '../api/cart';
 import AuthContext from '../context/AuthContext';
+import { showCheckError, showCheckToast } from '../Helpers/toast';
 
 
 
@@ -33,9 +34,8 @@ const Game = () => {
 
     const toggleFavorite = async(isAdd) => {
         if(auth){
-           const response =  (isAdd) ? await addFavorite(auth.idUser, game.id, logOut) : await deleteFavorite(isFavoriteState._id, logOut);
-           console.log(response);
-
+           const response = (isAdd) ? await addFavorite(auth.idUser, game.id, logOut) : await deleteFavorite(isFavoriteState._id, logOut);
+           (response._id) ? showCheckToast(`${ (isAdd)? "producto añadido a favoritos" : "producto eliminado de favoritos"}`): showCheckError("Ha ocurrido un error, intentalo nuevamente")
            setrealodFavorite(true);
         }
 
@@ -45,22 +45,22 @@ const Game = () => {
 
     useEffect(() => {
         if(query.game){
-            getGameUrl(query.game).then((data) => setGame({...data[0]}))
+            getGameUrl(query.game).then((data) => setGame({...data}))
                              .catch(console.log)
         }
     }, [query, realodFavorite]);
 
 
     useEffect(() => {
-
-        if(auth && game){
+        if(auth && game !== undefined){
+          
             isFavorite(auth.idUser, game.id, logOut).then((data) => setIsFavoriteState({...data[0]}))
                                                     .catch(console.log())
         }
     }, [game])
     
     
-
+    console.log(game);
 
   return (
     <div className='container'>

@@ -1,8 +1,9 @@
 .container_address_data{
     width: 95%;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
     align-items: center;
     .address_container{
         margin: 15px 0px;
@@ -14,5 +15,8 @@
         text-align: center;
         padding: 5px;
         border-radius: 25px;
+    }
+    .address_container_select{
+        background-color: rgba(33, 6, 189, 0.74);
     }
 }
