@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { FaBabyCarriage } from 'react-icons/fa';
+import { getDisscount, getTotal } from '../utils/functions';
 import { getGameUrl } from '../api/game'
 import {ImCross} from 'react-icons/im';
 import BasicLayout from '../Components/Layouts/BasicLayout'
 import GameComponent from '../Components/Games/'
-import Loader from 'react-loader-spinner';
-import { getDisscount, getTotal } from '../utils/functions';
-import { FaBabyCarriage } from 'react-icons/fa';
-import { getAdress } from '../api/address';
-import useAuth from '../Hooks/useAuth';
 import ListAddress from '../Components/Account/AccountPasswordForm/ListAddress';
+import Loader from 'react-loader-spinner';
+import Payment from '../Components/Payment/Payment';
+import useAuth from '../Hooks/useAuth';
 
 
 
@@ -17,18 +17,15 @@ const cart = () => {
 
     const {logOut, auth,setReloadUser,reloadUser} =  useAuth();
     
-
-    const [cartItems, setCartItems] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
-
     const [address, setaddress] = useState({});
+    const [cartItems, setCartItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [total, setTotal] = useState(0);
 
     const handleGame = (game) => {
         const newCart =  cartItems.filter(gameItem => gameItem.id !== game.id);
         localStorage.setItem('cart', JSON.stringify(newCart.map(game => game.url)));
         setCartItems(newCart);
-
     }
 
     const handleClick = (add) => {
@@ -54,9 +51,7 @@ const cart = () => {
     }, []);
     
     
-    useEffect(() => {
-        setTotal(getTotal(cartItems));
-  }, [cartItems])
+    useEffect(() => setTotal(getTotal(cartItems)), [cartItems]);
   
 
 
@@ -94,6 +89,12 @@ const cart = () => {
                     auth && <ListAddress logOut={logOut} user={{_id:auth.idUser }} reload={reloadUser} setReload={setReloadUser} click={handleClick} addselect={address}/>
                 }
             </div>
+            <div className='flex w-full justify-center'>
+
+                <Payment products={cartItems} address={address} />
+            </div>
+            
+            
         </BasicLayout>
     </div>
   )

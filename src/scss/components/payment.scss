@@ -1,0 +1,14 @@
+.pay{
+    color: rgb(233, 211, 13);
+    font-size: 50px;
+    z-index: 999;
+    margin: 0 auto;
+    margin-top: 20px;
+    cursor: pointer;
+
+    &:hover{
+        color: darkorange;
+        transform: scale(1.1);
+    }
+}
+

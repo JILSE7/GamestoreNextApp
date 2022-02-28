@@ -56,11 +56,11 @@ const RegisterForm = ({login}) => {
   
 
     return (
-        <div className="Modal_Container">
+        <div className="Modal_Container w-50">
             <div className="Modal_Container_Header">
                 <h1>Register</h1>
             </div>
-            <form onSubmit={formik.handleSubmit} className="Modal_Container_Form flex flex-col justify-evenly" autocomplete="Ñ0kompletes">
+            <form onSubmit={formik.handleSubmit} className="Modal_Container_Form  flex flex-col justify-evenly" autocomplete="Ñ0kompletes">
                 <label >Nombre {formik.errors.name ? "*" :""}</label>
                 <input type="text" name="name" placeholder="Escribe tu nombre"   onChange={formik.handleChange}/>
                 <label>Apellidos {formik.errors.lastname ? "*" :""}</label>
