@@ -9,10 +9,10 @@ const BasicLayout = ({children, className}) => {
         <div className="layout_container flex flex-col items-center justify-between">
             <Header/>
             <div className="container">
-                <div class="lines">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
+                <div className="lines">
+                    <div className="line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
                 </div>
                 <div className={classNames("h1",{
                     [className] : className

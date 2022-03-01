@@ -5,23 +5,19 @@
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
-
-    
-
-
     &_header{
         background-color: $primary;
         width: 100%;
-        height: 60px;
+        height: 90px;
         color: $font-with;
-        padding: 0 20px;
+        padding: 10px 20px;
     }
 
     &_logo{
         
         &_image{
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
         
         &_h1{
@@ -52,7 +48,7 @@
         }
     }
     &_input{
-        background-color: transparent;
+        background-color: transparent !important;
         border: 0 ;
         border-bottom:  2px solid $font-blue;
         width: 0px;
@@ -189,7 +185,7 @@
         }
 
         &_input{           
-            width: 115px;
+            width: 125px;
             padding-right: 10px;
             &:hover{
                 width: 220px;

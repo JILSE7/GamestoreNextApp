@@ -3,7 +3,7 @@ import React from 'react'
 const GameComponent = ({game}) => {
 
   
-    console.log(game);
+
   return (
     <div className="container_game">
       {

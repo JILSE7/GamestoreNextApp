@@ -1,5 +1,7 @@
-import 'tailwindcss/tailwind.css'
+import '../styles/tailwind.css';
 import '../scss/global.scss';
+import 'tailwindcss/tailwind.css'
+
 //Toast
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

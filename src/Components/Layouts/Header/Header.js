@@ -29,8 +29,8 @@ const Header = () => {
     return (
         <div style={{width:"100vw"}}>
         
-        <header className="layout_container_header flex  items-center justify-between" >
-                        <Logo/>
+        <header className="layout_container_header flex  items-center justify-between " >
+                        <Logo />
                         <Search setSearch={setSearch} search={search} handlePress={handlePress}/>
                         <div className="flex items-center">
                             {
