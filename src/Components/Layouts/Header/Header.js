@@ -22,7 +22,7 @@ const Header = () => {
     const [search, setSearch] = useState("");
 
     const handlePress = (e) => {
-        console.log(e);
+
         e.code === "Enter" &&  router.push(`/search?query=${search}`);
     }
    
@@ -67,7 +67,7 @@ const Search = ({search,setSearch, handlePress}) => (
         <div className="flex items-center layout_container_search">
             <VscSearch  className="layout_container_icon"/>
             <input 
-                type="serch" 
+                type="serc" 
                 placeholder="Busquemos un juego" 
                 className="layout_container_input bg-gray-800  focus:outline-none py-1 px-4 text-center"
                 id="inputSearch"
@@ -76,6 +76,7 @@ const Search = ({search,setSearch, handlePress}) => (
                     console.log(e);
                     setSearch(e.target.value)
                 }}
+                autoComplete="false"
                 onKeyPress={handlePress}
                 
             />

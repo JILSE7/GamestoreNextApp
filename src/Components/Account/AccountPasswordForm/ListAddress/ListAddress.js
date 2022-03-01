@@ -6,7 +6,7 @@ const ListAddress = ({user, logOut, reload, setReload, click,addselect}) => {
 
     
     const [address, setAddress] = useState(null);
-    console.log(address);
+
     useEffect(() => {
        (async() => {
            if((user && !address) || reload){

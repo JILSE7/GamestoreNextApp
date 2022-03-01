@@ -15,6 +15,7 @@ import useCart from '../Hooks/useCart';
 import { addProductC } from '../api/cart';
 import AuthContext from '../context/AuthContext';
 import { showCheckError, showCheckToast } from '../Helpers/toast';
+import Seo from '../Components/Seo';
 
 
 
@@ -60,16 +61,17 @@ const Game = () => {
     }, [game])
     
     
-    console.log(game);
+
 
   return (
     <div className='container'>
         <BasicLayout>
            {
-                game !== undefined ? (
+               game !== undefined ? (
                    <>
+                   <Seo title={game.title} desciption={game.summary}/>
                     <div className='container_game_search'>
-                       <GameComponent game={game}/>
+                       <GameComponent game={game} />
                         <div className='game_info'>
                             <h5 className='game_title'>{game.title}</h5>
                             <div className='game_summary'>

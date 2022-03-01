@@ -13,7 +13,7 @@ const Platform = memo(() => {
   useEffect(() => {
       if(platform){
         getGamePLatfomApi(platform, 10,0).then(data => setGames([...data]))
-                                        .catch(console.log())
+                                        .catch(console.log)
       }
   }, [platform]);
   

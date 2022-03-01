@@ -13,7 +13,7 @@ import useAuth from '../Hooks/useAuth';
 
 
 
-const cart = () => {
+const Cart = () => {
 
     const {logOut, auth,setReloadUser,reloadUser} =  useAuth();
     
@@ -21,6 +21,7 @@ const cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [total, setTotal] = useState(0);
+    
 
     const handleGame = (game) => {
         const newCart =  cartItems.filter(gameItem => gameItem.id !== game.id);
@@ -91,7 +92,7 @@ const cart = () => {
             </div>
             <div className='flex w-full justify-center'>
 
-                <Payment products={cartItems} address={address} />
+                <Payment products={cartItems} address={address} setpaymentState={setReloadUser}/>
             </div>
             
             

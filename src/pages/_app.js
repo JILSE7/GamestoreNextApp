@@ -30,9 +30,7 @@ function MyApp({ Component, pageProps }) {
             <CartContext.Provider value={{
               addProductCart:addProduct,
               getProductsCart: getProductsC,
-              products: cart
-             /* removeAllProductCart,
-              removeProductCart */}}>
+              products: cart}}>
 
                 <ToastContainer
                 position="top-right"

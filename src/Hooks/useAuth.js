@@ -37,7 +37,7 @@ const useAuth = () => {
       const addProduct = (product) => {
         
         if(getToken()){
-          console.log("entro aqui");
+          //console.log("entro aqui");
           addProductC(product);
         }else{
           showCheckError("Para comprar necesitas iniciar sesión");

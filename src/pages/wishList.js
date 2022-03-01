@@ -4,7 +4,7 @@ import BasicLayout from '../Components/Layouts/BasicLayout'
 import useAuth from '../Hooks/useAuth';
 import GameComponent from '../Components/Games';
 
-const wishList = () => {
+const WishList = () => {
 
     const {auth, logOut} = useAuth();
 
@@ -37,4 +37,4 @@ const wishList = () => {
   )
 }
 
-export default wishList
+export default WishList

@@ -12,7 +12,7 @@ import { showCheckToast, showErrorToast } from '../../../Helpers/toast';
 
 
 const AccountEmailForm = ({user, logOut}) => {
-    console.log(user);
+
      
     if(!user) return <WaitUser/>;
     const [loading, setLoading] = useState(false);
@@ -27,7 +27,6 @@ const AccountEmailForm = ({user, logOut}) => {
             console.log(data);
             setLoading(true);
             const response = await updateEmailApi(user.id, data, logOut);
-            console.log(response);
             if(!response || response.statusCode === 400){
                 showErrorToast("email", "Error al actualizar el email");
                 if(response.data[0]?.messages[0].message)showErrorToast('email',response.data[0].messages[0].message);

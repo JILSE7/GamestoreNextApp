@@ -19,14 +19,9 @@ export const getGamePLatfomApi = async(platform, limit, start) => {
     try {
 
         const url = `${BASE_PATH}/games?platform=${platform}&_limit=${limit}&_start=${start}&_sort=createdAt:desc`;
-
-        console.log(url);
         const result = await (await fetch(url)).json();
 
         return result;
-
-
-
     } catch (error) {
         console.log(error);
     }
@@ -35,7 +30,6 @@ export const getGamePLatfomApi = async(platform, limit, start) => {
 export const getGameUrl = async(path) => {
     try {
         const url = `${BASE_PATH}/games?url=${path}`;
-        console.log(url);
         const result = await (await fetch(url)).json();
 
         return result[0] || undefined;

@@ -44,7 +44,7 @@ const LoginForm = ({login, setModal}) => {
     const resetPassword = async() => {
             const validateEmail = Yup.string().email().required();
             if(!validateEmail.isValidSync(formik.values.identifier)){
-                console.log("Email invalido");
+
                 ref.current.value= '';
                 ref.current.placeholder = "EMAIL INVALIDO"
                 return;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js'
@@ -6,12 +6,21 @@ import { STRIPE_TOPKEN } from '../../utils/constants';
 
 import {FaAmazonPay} from 'react-icons/fa'
 import { toast } from 'react-toastify';
-import { showCheckError } from '../../Helpers/toast';
+import { showCheckError, showCheckToast } from '../../Helpers/toast';
+import { cleanCart, paymentCartApi } from '../../api/cart';
+import AuthContext from '../../context/AuthContext';
+import { useRouter } from 'next/router';
 
 
 const FormPayment = ({products, address}) => {
 
     const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
+
+    const {auth, logOut} = useContext(AuthContext);
+
+
 
     const stripe = useStripe();
     const elements = useElements();
@@ -26,8 +35,20 @@ const FormPayment = ({products, address}) => {
         const cardElement = elements.getElement(CardElement);
 
         const result = await stripe.createToken(cardElement);
-        console.log(result);
-        console.log("pagandoooooo");
+
+        if(result.error) return showCheckError("Error al realizar el pago");
+
+        const respose = await paymentCartApi(result.token, products,auth.idUser,address, logOut);
+        if(respose.length > 0){
+            showCheckToast("Transaccion realizada correctamente");  
+            cleanCart();
+            setTimeout(() => {
+                router.push('/orders');
+            }, 500);
+        }else{
+            showCheckError("Hubo un error");
+        }
+
     }
     
 

@@ -25,7 +25,6 @@ const AccountPasswordForm = ({user, logOut}) => {
         onSubmit : async(data) => {
             setLoading(true);
             const response = await updatePassword(user.id, data, logOut);
-            console.log(response);
             if(!response){
                 toast.error("Error al la contraseña");
                 return;
@@ -35,7 +34,7 @@ const AccountPasswordForm = ({user, logOut}) => {
             showCheckToast("Contraseña actualizada correctamente");
             setLoading(false);
             setReloadUser(true);
-            console.log(data);
+
             
         }
 

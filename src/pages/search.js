@@ -5,9 +5,10 @@ import BasicLayout from '../Components/Layouts/BasicLayout'
 import { showCheckError, showCheckToast, showErrorToast } from '../Helpers/toast';
 import GameComponent from '../Components/Games';
 import Link from 'next/link';
+import Seo from '../Components/Seo';
 
 
-const search = () => {
+const Search = () => {
 
         const {query} = useRouter();
         const [games, setGames] = useState([])
@@ -36,6 +37,7 @@ const search = () => {
   return (
     <div className="container ">
     <BasicLayout >
+      <Seo title={`Buscando: ${query.query}`}/>
     <h2 className='text-center'>Estamos buscando: {query.query}</h2>
     
     <div className='flex flex-wrap w-full item-center justify-center'>
@@ -50,4 +52,4 @@ const search = () => {
   )
 }
 
-export default search
+export default Search

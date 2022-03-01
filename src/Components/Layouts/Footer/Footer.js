@@ -40,7 +40,7 @@ const Footer = () => {
                 auth  &&(
                     <>
                     
-                        <Link href="/mispedidos">
+                        <Link href="/orders">
                             <a className="flex flex-col items-center p-1 cursor-pointer">
                             <BsController size={"1.5em"}/>
                             Mis pedidos

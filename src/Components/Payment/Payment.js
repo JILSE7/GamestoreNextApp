@@ -16,7 +16,7 @@ const Payment = ({products, address}) => {
         
         <div className="Modal_Container_Header"><h1>Payment</h1></div>
         <Elements className="z-50" stripe={stripePromise}>
-            <FormPayment products={products} address={address}/>
+            <FormPayment products={products} address={address} />
         </Elements>
         
         

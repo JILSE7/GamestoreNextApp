@@ -14,7 +14,7 @@ export const createAddress = async(address, logOut) => {
             }
             return  await authFetch(url,params,logOut);
     } catch (error) {
-        console.log(error);
+
         showCheckError("Error al crear la nueva direccion")
     }
 }
@@ -32,7 +32,7 @@ export const getAdress =  async(user,logOut) => {
         return  await authFetch(url,params,logOut);
         
     } catch (error) {
-        console.log(error);
+
         showCheckError("Error al crear la nueva direccion")
     }
 }

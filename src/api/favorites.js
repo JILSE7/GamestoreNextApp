@@ -66,3 +66,6 @@ export const getFavorites = async(idUser, logout) => {
         console.log(error);
     }
 }
+
+
+
